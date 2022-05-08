@@ -4,13 +4,16 @@ import AppointmentsDashboard from './appointmentsDashboard/AppointmentsDashboard
 import { useStore } from '../../../stores/store';
 import { observer } from 'mobx-react-lite';
 
+
 function Appointments() {
   const {appointmentsStore, userStore} = useStore();
   const {user} = userStore;
 
+
   useEffect(() => {
     appointmentsStore.loadAppointments();
-  }, [appointmentsStore])
+  },[appointmentsStore])
+
 
   return (
     <div>
@@ -34,9 +37,10 @@ function Appointments() {
         </table>
       </AppointmentsContainer>
     </div>
-  )
-}
 
+  )
+
+}
 export default observer(Appointments);
 
 

@@ -14,10 +14,13 @@ export const AppointmentsContainer = styled.div`
         padding: 15px 32px;        
         font-size: 16px;
         cursor: pointer;
+
     }
+
     .lefth:hover{
         background-color: #34eb9e;
     }
+    
     .righth{
         margin-left: auto; 
         margin-right: 0;
