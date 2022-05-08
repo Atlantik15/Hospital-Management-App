@@ -67,7 +67,6 @@ const Patient = ({ classes, ...props }) => {
             id: key,
             ...data[key],
           };
-          console.log(patient);
           patients.push(patient); //here we stopped check again
         }
         setLoadPatients(patients);

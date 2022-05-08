@@ -42,7 +42,6 @@ function PatientTable({ classes, ...props }) {
             id: key,
             ...data[key],
           };
-          console.log(patient);
           patients.push(patient);
         }
         setLoadPatients(patients);

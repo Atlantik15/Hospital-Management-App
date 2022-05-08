@@ -32,7 +32,6 @@ export const fetchAll=()=>dispatch=>{
                 id:key,
                 ...data[key],
             };
-            console.log(patients);
             patients.push(patients);
         }
     })
