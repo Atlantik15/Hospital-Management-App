@@ -7,25 +7,25 @@ using Persistence;
 
 namespace Application.LabTests
 {
-    public class Details
+  public class Details
+  {
+    public class Query : IRequest<LabTest>
     {
-         public class Query : IRequest<LabTest>
-        {
-            public Guid Id { get; set; }
-        }
-
-        public class Handler : IRequestHandler<Query, LabTest>
-        {
-            private readonly DataContext context;
-            public Handler(DataContext context)
-            {
-                this.context = context;
-            }
-
-            public async Task<LabTest> Handle(Query reuqestQuery, CancellationToken cancellationToken)
-            {
-                 return await context.LabTests.FindAsync(reuqestQuery.Id);
-            }
-        }
+      public Guid Id { get; set; }
     }
+
+    public class Handler : IRequestHandler<Query, LabTest>
+    {
+      private readonly DataContext context;
+      public Handler(DataContext context)
+      {
+        this.context = context;
+      }
+
+      public async Task<LabTest> Handle(Query reuqestQuery, CancellationToken cancellationToken)
+      {
+        return await context.LabTests.FindAsync(reuqestQuery.Id);
+      }
+    }
+  }
 }

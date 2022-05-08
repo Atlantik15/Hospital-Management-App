@@ -334,18 +334,18 @@ let chartExample1 = {
       datasets: [
         {
           label: "Performance",
-          data: [40,27,32,42,28,50],
-          fill:true,
-          backgroundColor:"rgba(254,203,144,0.2)",
+          data: [40, 27, 32, 42, 28, 50],
+          fill: true,
+          backgroundColor: "rgba(254,203,144,0.2)",
           borderColor: "#fecb90",
         },
         {
-          label:"Test",
-          data: [25,12,18,28,16,40],
-          fill:true,
-          backgroundColor:"rgba(142,89,250,0.2)",
-          borderColor:"#8e59fa"
-        }
+          label: "Test",
+          data: [25, 12, 18, 28, 16, 40],
+          fill: true,
+          backgroundColor: "rgba(142,89,250,0.2)",
+          borderColor: "#8e59fa",
+        },
       ],
     };
   },

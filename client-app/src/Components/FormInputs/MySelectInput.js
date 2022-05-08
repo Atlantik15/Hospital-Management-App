@@ -1,12 +1,12 @@
-import {useField} from "formik";
+import { useField } from "formik";
 import React from "react";
-import {Form, Label, Dropdown} from "semantic-ui-react";
+import { Form, Label, Dropdown } from "semantic-ui-react";
 
 export default function MySelectInput(props) {
   const [field, meta, helpers] = useField(props.name);
   return (
     <Form.Field
-      style={{marginBottom: "10px"}}
+      style={{ marginBottom: "10px" }}
       error={meta.touched && !!meta.error}
     >
       <label>{props.label}</label>

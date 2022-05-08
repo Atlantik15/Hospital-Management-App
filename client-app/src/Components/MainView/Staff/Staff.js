@@ -1,13 +1,13 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import UserDash from "./User/UserDash/UserDash";
-import {Tab, Grid} from "semantic-ui-react";
-import {useStore} from "../../../stores/store";
-import {observer} from "mobx-react-lite";
+import { Tab, Grid } from "semantic-ui-react";
+import { useStore } from "../../../stores/store";
+import { observer } from "mobx-react-lite";
 import RegisterForm from "./User/RegisterForm";
 import LoadingComponent from "../../../LoadingComponent";
 
 function Staff() {
-  const {userStore, countryStore, cityStore} = useStore();
+  const { userStore, countryStore, cityStore } = useStore();
   const userRoles = [
     {
       roleNr: 0,
@@ -30,10 +30,10 @@ function Staff() {
     {
       menuItem: "admin",
       render: () => (
-        <Tab.Pane style={{height: "85vh", overflowY: "auto"}}>
+        <Tab.Pane style={{ height: "85vh", overflowY: "auto" }}>
           <UserDash
             roleName={userRoles[0].roleName}
-            style={{position: "relative"}}
+            style={{ position: "relative" }}
           />
         </Tab.Pane>
       ),
@@ -41,10 +41,10 @@ function Staff() {
     {
       menuItem: "superadmin",
       render: () => (
-        <Tab.Pane style={{height: "85vh", overflowY: "auto"}}>
+        <Tab.Pane style={{ height: "85vh", overflowY: "auto" }}>
           <UserDash
             roleName={userRoles[1].roleName}
-            style={{position: "relative"}}
+            style={{ position: "relative" }}
           />
         </Tab.Pane>
       ),
@@ -52,10 +52,10 @@ function Staff() {
     {
       menuItem: "receptionist",
       render: () => (
-        <Tab.Pane style={{height: "85vh", overflowY: "auto"}}>
+        <Tab.Pane style={{ height: "85vh", overflowY: "auto" }}>
           <UserDash
             roleName={userRoles[2].roleName}
-            style={{position: "relative"}}
+            style={{ position: "relative" }}
           />
         </Tab.Pane>
       ),
@@ -63,10 +63,10 @@ function Staff() {
     {
       menuItem: "nurse",
       render: () => (
-        <Tab.Pane style={{height: "85vh", overflowY: "auto"}}>
+        <Tab.Pane style={{ height: "85vh", overflowY: "auto" }}>
           <UserDash
             roleName={userRoles[3].roleName}
-            style={{position: "relative"}}
+            style={{ position: "relative" }}
           />
         </Tab.Pane>
       ),
@@ -96,7 +96,7 @@ function Staff() {
             <RegisterForm />
           </Grid.Column>
           <Grid.Column width="11">
-            <Tab menu={{secondary: true, pointing: true}} panes={panes} />
+            <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
           </Grid.Column>
         </Grid.Row>
       </Grid>

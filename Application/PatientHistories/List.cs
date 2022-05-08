@@ -10,24 +10,24 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.PatientHistories
 {
-    public class List
+  public class List
+  {
+    public class Query : IRequest<List<PatientHistory>> { }
+
+    public class Handler : IRequestHandler<Query, List<PatientHistory>>
     {
-        public class Query : IRequest<List<PatientHistory>> { }
+      private readonly DataContext context;
 
-        public class Handler : IRequestHandler<Query, List<PatientHistory>>
-        {
-            private readonly DataContext context;
+      public Handler(DataContext context)
+      {
+        this.context = context;
+      }
 
-            public Handler(DataContext context)
-            {
-                this.context = context;
-            }
+      public async Task<List<PatientHistory>> Handle(Query request, CancellationToken cancellationToken)
+      {
 
-            public async Task<List<PatientHistory>> Handle(Query request, CancellationToken cancellationToken)
-            {
-              
-                return await context.PatientHistories.ToListAsync(cancellationToken);
-            }
-        }
+        return await context.PatientHistories.ToListAsync(cancellationToken);
+      }
     }
+  }
 }

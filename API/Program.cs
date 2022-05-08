@@ -15,47 +15,47 @@ using Domain;
 
 namespace API
 {
-    public class Program
+  public class Program
+  {
+    public static async Task Main(string[] args)
     {
-        public static async Task Main(string[] args)
-        {
-            var host = CreateHostBuilder(args).Build();
+      var host = CreateHostBuilder(args).Build();
 
-            using var scope = host.Services.CreateScope();
+      using var scope = host.Services.CreateScope();
 
-            var services = scope.ServiceProvider;
+      var services = scope.ServiceProvider;
 
-            try
-            {
-                var context = services.GetRequiredService<DataContext>();
-                var userManager = services.GetRequiredService<UserManager<AppUser>>();
-                context.Database.Migrate();
-                await Seed.SeedData(context, userManager);
-                await SeedProfile.SeedData(context);
-                await SeedAppointments.SeedData(context);
-                await SeedServices.SeedData(context);
-                await SeedActivity.SeedData(context);
-                await SeedAbout.SeedData(context);
-                await SeedCountry.SeedData(context);
-                await SeedWorkingHours.SeedData(context);
-                await SeedAchievement.SeedData(context);
-                await SeedCity.SeedData(context);
-                await SeedPrescription.SeedData(context);
-            }
-            catch (Exception ex)
-            {
-                var logger = services.GetRequiredService<ILogger<Program>>();
-                logger.LogError(ex, "An error occured during migration");
-            }
+      try
+      {
+        var context = services.GetRequiredService<DataContext>();
+        var userManager = services.GetRequiredService<UserManager<AppUser>>();
+        context.Database.Migrate();
+        await Seed.SeedData(context, userManager);
+        await SeedProfile.SeedData(context);
+        await SeedAppointments.SeedData(context);
+        await SeedServices.SeedData(context);
+        await SeedActivity.SeedData(context);
+        await SeedAbout.SeedData(context);
+        await SeedCountry.SeedData(context);
+        await SeedWorkingHours.SeedData(context);
+        await SeedAchievement.SeedData(context);
+        await SeedCity.SeedData(context);
+        await SeedPrescription.SeedData(context);
+      }
+      catch (Exception ex)
+      {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occured during migration");
+      }
 
-            await host.RunAsync();
-        }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+      await host.RunAsync();
     }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+              webBuilder.UseStartup<Startup>();
+            });
+  }
 }

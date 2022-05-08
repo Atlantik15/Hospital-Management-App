@@ -10,23 +10,23 @@ using Persistence;
 
 namespace Application.Users
 {
-    public class List
+  public class List
+  {
+    public class Query : IRequest<List<AppUser>> { }
+
+    public class Handler : IRequestHandler<Query, List<AppUser>>
     {
-        public class Query : IRequest<List<AppUser>> { }
+      private readonly DataContext context;
+      public Handler(DataContext context)
+      {
+        this.context = context;
 
-        public class Handler : IRequestHandler<Query, List<AppUser>>
-        {
-            private readonly DataContext context;
-            public Handler(DataContext context)
-            {
-                this.context = context;
+      }
+      public async Task<List<AppUser>> Handle(Query request, CancellationToken cancellationToken)
+      {
 
-            }
-            public async Task<List<AppUser>> Handle(Query request, CancellationToken cancellationToken)
-            {
-
-                return await context.AppUsers.ToListAsync(cancellationToken);
-            }
-        }
+        return await context.AppUsers.ToListAsync(cancellationToken);
+      }
     }
+  }
 }

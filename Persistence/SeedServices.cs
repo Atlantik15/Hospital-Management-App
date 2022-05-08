@@ -8,13 +8,13 @@ using Domain;
 
 namespace Persistence
 {
-    public class SeedServices
+  public class SeedServices
+  {
+    public static async Task SeedData(DataContext context)
     {
-        public static async Task SeedData(DataContext context)
-        {
-            if (context.SAboutUs.Any()) return;
+      if (context.SAboutUs.Any()) return;
 
-            var aboutus = new List<AboutUs>
+      var aboutus = new List<AboutUs>
             {
                 new AboutUs
                 {
@@ -28,8 +28,8 @@ namespace Persistence
                 }
             };
 
-            await context.SAboutUs.AddRangeAsync(aboutus);
-            await context.SaveChangesAsync();
-        }
+      await context.SAboutUs.AddRangeAsync(aboutus);
+      await context.SaveChangesAsync();
     }
+  }
 }

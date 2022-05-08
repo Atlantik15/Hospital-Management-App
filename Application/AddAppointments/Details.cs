@@ -7,26 +7,27 @@ using MediatR;
 
 namespace Application.AddAppointments
 {
-    public class Details
+  public class Details
+  {
+    public class Query : IRequest<AddAppointment>
     {
-        public class Query : IRequest<AddAppointment>
-        {
 
-            public int Id { get; set; }
+      public int Id { get; set; }
 
-        }
-        public class Handler : IRequestHandler<Query, AddAppointment>
-        {
-            private readonly DataContext _context;
-            public Handler(DataContext context)
-            {
-                _context = context;
-
-            }
-
-            public async Task<AddAppointment> Handle(Query request, CancellationToken cancellation){
-                return await _context.Appointments.FindAsync(request.Id);
-            }
-        }
     }
+    public class Handler : IRequestHandler<Query, AddAppointment>
+    {
+      private readonly DataContext _context;
+      public Handler(DataContext context)
+      {
+        _context = context;
+
+      }
+
+      public async Task<AddAppointment> Handle(Query request, CancellationToken cancellation)
+      {
+        return await _context.Appointments.FindAsync(request.Id);
+      }
+    }
+  }
 }

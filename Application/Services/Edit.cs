@@ -7,33 +7,33 @@ using Persistence;
 
 namespace Application.Services
 {
-    public class Edit
+  public class Edit
+  {
+    public class Command : IRequest
     {
-        public class Command : IRequest
-        {
-            public AboutUs AboutUs { get; set; }
-        }
-
-        public class Handler : IRequestHandler<Command>
-        {
-            private readonly DataContext _context;
-            private readonly IMapper _mapper;
-            public Handler(DataContext context, IMapper mapper)
-            {
-                this._mapper = mapper;
-                this._context = context;
-            }
-
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
-            {
-                var aboutus = await this._context.SAboutUs.FindAsync(request.AboutUs.Id);
-
-                _mapper.Map(request.AboutUs, aboutus);
-
-                await this._context.SaveChangesAsync();
-
-                return Unit.Value;
-            }
-        }
+      public AboutUs AboutUs { get; set; }
     }
+
+    public class Handler : IRequestHandler<Command>
+    {
+      private readonly DataContext _context;
+      private readonly IMapper _mapper;
+      public Handler(DataContext context, IMapper mapper)
+      {
+        this._mapper = mapper;
+        this._context = context;
+      }
+
+      public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+      {
+        var aboutus = await this._context.SAboutUs.FindAsync(request.AboutUs.Id);
+
+        _mapper.Map(request.AboutUs, aboutus);
+
+        await this._context.SaveChangesAsync();
+
+        return Unit.Value;
+      }
+    }
+  }
 }

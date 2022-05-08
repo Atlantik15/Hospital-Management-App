@@ -1,18 +1,18 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import welcomeImage from "../../assets/welcome-img.png";
 import backgroundImage from "../../assets/background-img.jpg";
 import * as s from "./Login.styles";
-import {ErrorMessage, Form, Formik} from "formik";
+import { ErrorMessage, Form, Formik } from "formik";
 import MyTextInput from "../FormInputs/MyTextInput";
-import {useStore} from "../../stores/store";
-import {observer} from "mobx-react-lite";
-import {Button, Divider} from "semantic-ui-react";
-import {useState} from "react";
+import { useStore } from "../../stores/store";
+import { observer } from "mobx-react-lite";
+import { Button, Divider } from "semantic-ui-react";
+import { useState } from "react";
 
 export default observer(function Login() {
-  const {userStore} = useStore();
-  const [passVisibility, setPassVisibility] = useState({showPassword: false});
+  const { userStore } = useStore();
+  const [passVisibility, setPassVisibility] = useState({ showPassword: false });
 
   const handleClickShowPassword = (event) => {
     setPassVisibility({
@@ -39,7 +39,7 @@ export default observer(function Login() {
               <>
                 <h6>Go back to</h6>
                 <Link to="/profile">
-                  <h3 style={{border: "2px solid"}}>Profile</h3>
+                  <h3 style={{ border: "2px solid" }}>Profile</h3>
                 </Link>
               </>
             )}
@@ -51,7 +51,7 @@ export default observer(function Login() {
             <div class="login-header">
               <h3>Login</h3>
               <p>Login to your account</p>
-              <Divider style={{width: "80%"}} />
+              <Divider style={{ width: "80%" }} />
             </div>
             <Formik
               initialValues={{
@@ -59,15 +59,15 @@ export default observer(function Login() {
                 password: "",
                 error: null,
               }}
-              onSubmit={(values, {setErrors}) =>
+              onSubmit={(values, { setErrors }) =>
                 userStore
                   .login(values)
                   .catch((error) =>
-                    setErrors({error: "Invalid email or password"})
+                    setErrors({ error: "Invalid email or password" })
                   )
               }
             >
-              {({handleSubmit, isSubmitting, errors}) => (
+              {({ handleSubmit, isSubmitting, errors }) => (
                 <Form
                   style={{
                     position: "relative",
@@ -84,7 +84,7 @@ export default observer(function Login() {
                     name="email"
                     placeholder="Email"
                   />
-                  <p style={{marginTop: "20px"}}>
+                  <p style={{ marginTop: "20px" }}>
                     <b>Password*</b>
                   </p>
                   <MyTextInput

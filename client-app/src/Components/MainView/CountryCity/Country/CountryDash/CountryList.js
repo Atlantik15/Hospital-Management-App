@@ -1,11 +1,11 @@
-import React, {useState} from "react";
-import {Button, Item, Flag, Segment} from "semantic-ui-react";
-import {useStore} from "../../../../../stores/store";
-import {observer} from "mobx-react-lite";
+import React, { useState } from "react";
+import { Button, Item, Flag, Segment } from "semantic-ui-react";
+import { useStore } from "../../../../../stores/store";
+import { observer } from "mobx-react-lite";
 
 export default observer(function CountryList() {
-  const {countryStore} = useStore();
-  const {deleteCountry, countryByName, loading} = countryStore;
+  const { countryStore } = useStore();
+  const { deleteCountry, countryByName, loading } = countryStore;
   const [target, setTarget] = useState("");
 
   function handleCountryDelete(e, id) {

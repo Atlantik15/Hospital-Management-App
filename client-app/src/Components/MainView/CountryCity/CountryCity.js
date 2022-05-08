@@ -1,19 +1,19 @@
-import React, {useEffect} from "react";
-import {Tab, Grid, Divider} from "semantic-ui-react";
-import {useStore} from "../../../stores/store";
-import {observer} from "mobx-react-lite";
+import React, { useEffect } from "react";
+import { Tab, Grid, Divider } from "semantic-ui-react";
+import { useStore } from "../../../stores/store";
+import { observer } from "mobx-react-lite";
 import CountryDash from "./Country/CountryDash/CountryDash";
 import CityDash from "./City/CityDash/CityDash";
 import LoadingComponent from "../../../LoadingComponent";
 
 function CountryCity() {
-  const {countryStore, cityStore} = useStore();
+  const { countryStore, cityStore } = useStore();
 
   const panes2 = [
     {
       menuItem: "Countries",
       render: () => (
-        <Tab.Pane style={{height: "85vh", overflowY: "auto"}}>
+        <Tab.Pane style={{ height: "85vh", overflowY: "auto" }}>
           <CountryDash />
         </Tab.Pane>
       ),
@@ -21,7 +21,7 @@ function CountryCity() {
     {
       menuItem: "Cities",
       render: () => (
-        <Tab.Pane style={{height: "85vh", overflowY: "auto"}}>
+        <Tab.Pane style={{ height: "85vh", overflowY: "auto" }}>
           <CityDash />
         </Tab.Pane>
       ),
@@ -45,7 +45,7 @@ function CountryCity() {
       <Grid stackable doubling>
         <Grid.Column width="16">
           <Tab
-            menu={{fluid: true, vertical: true, tabular: true}}
+            menu={{ fluid: true, vertical: true, tabular: true }}
             panes={panes2}
           />
         </Grid.Column>

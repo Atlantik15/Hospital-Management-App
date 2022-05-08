@@ -6,13 +6,13 @@ using Domain;
 
 namespace Persistence
 {
-    public class SeedAppointments
+  public class SeedAppointments
+  {
+    public static async Task SeedData(DataContext context)
     {
-        public static async Task SeedData(DataContext context)
-        {
-            if (context.Appointments.Any()) return;
-            
-            var appointments = new List<AddAppointment>
+      if (context.Appointments.Any()) return;
+
+      var appointments = new List<AddAppointment>
             {
                 new AddAppointment
                 {
@@ -23,7 +23,7 @@ namespace Persistence
                     Status = "Approved",
                 },
                 new AddAppointment
-                {   
+                {
                     CustomerName = "Lavdim Menxhiqi",
                     AppointmentDate = DateTime.Now.AddMonths(-1),
                     DoctorName = "Jane Doe",
@@ -32,8 +32,8 @@ namespace Persistence
                 }
             };
 
-            await context.Appointments.AddRangeAsync(appointments);
-            await context.SaveChangesAsync();
-        }
+      await context.Appointments.AddRangeAsync(appointments);
+      await context.SaveChangesAsync();
     }
+  }
 }

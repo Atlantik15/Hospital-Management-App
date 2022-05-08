@@ -3,11 +3,11 @@ using Domain;
 
 namespace Application.PrescriptionsCore
 {
-    public class MappingProfiles : Profile
+  public class MappingProfiles : Profile
+  {
+    public MappingProfiles()
     {
-        public MappingProfiles()
-        {
-            CreateMap<Prescription,Prescription>();
-        }
+      CreateMap<Prescription, Prescription>();
     }
+  }
 }

@@ -10,25 +10,25 @@ using System.Threading.Tasks;
 
 namespace Application.Services
 {
-    public class List
+  public class List
+  {
+    public class Query : IRequest<List<AboutUs>> { }
+
+    public class Handler : IRequestHandler<Query, List<AboutUs>>
     {
-        public class Query : IRequest<List<AboutUs>> { }
+      private readonly DataContext _context;
 
-        public class Handler : IRequestHandler<Query, List<AboutUs>>
-        {
-            private readonly DataContext _context;
-       
-            public Handler(DataContext context)
-            {
-                this._context = context;
-            }
+      public Handler(DataContext context)
+      {
+        this._context = context;
+      }
 
-            public async Task<List<AboutUs>> Handle(Query request, CancellationToken cancellationToken)
-            {
-              
+      public async Task<List<AboutUs>> Handle(Query request, CancellationToken cancellationToken)
+      {
 
-                return await this._context.SAboutUs.ToListAsync(cancellationToken);
-            }
-        }
+
+        return await this._context.SAboutUs.ToListAsync(cancellationToken);
+      }
     }
+  }
 }

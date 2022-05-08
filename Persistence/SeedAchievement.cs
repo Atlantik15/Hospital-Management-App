@@ -6,14 +6,14 @@ using Domain;
 
 namespace Persistence
 {
-    public class SeedAchievement
+  public class SeedAchievement
+  {
+    public static async Task SeedData(DataContext context)
     {
-       public static async Task SeedData(DataContext context)
-        {
 
-            if (context.Achievements.Any()) return;
+      if (context.Achievements.Any()) return;
 
-            var achievements = new List<Achievement>
+      var achievements = new List<Achievement>
             {
                 new Achievement
                 {
@@ -23,8 +23,8 @@ namespace Persistence
                 }
             };
 
-            await context.Achievements.AddRangeAsync(achievements);
-            await context.SaveChangesAsync();
-        } 
+      await context.Achievements.AddRangeAsync(achievements);
+      await context.SaveChangesAsync();
     }
+  }
 }

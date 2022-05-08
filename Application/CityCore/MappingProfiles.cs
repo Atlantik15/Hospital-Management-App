@@ -3,11 +3,11 @@ using Domain;
 
 namespace Application.CityCore
 {
-    public class MappingProfiles : Profile
+  public class MappingProfiles : Profile
+  {
+    public MappingProfiles()
     {
-        public MappingProfiles()
-        {
-            CreateMap<City, City>();
-        }
+      CreateMap<City, City>();
     }
+  }
 }

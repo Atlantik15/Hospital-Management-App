@@ -1,12 +1,13 @@
-import React, {useState} from "react";
-import {Form, Segment, Button} from "semantic-ui-react";
-import {useStore} from "../../../../../stores/store";
-import {observer} from "mobx-react-lite";
+import React, { useState } from "react";
+import { Form, Segment, Button } from "semantic-ui-react";
+import { useStore } from "../../../../../stores/store";
+import { observer } from "mobx-react-lite";
 
 export default observer(function CityForm() {
-  const {cityStore} = useStore();
+  const { cityStore } = useStore();
 
-  const {selectedCity, closeForm, createCity, updateCity, loading} = cityStore;
+  const { selectedCity, closeForm, createCity, updateCity, loading } =
+    cityStore;
   const initialState = selectedCity ?? {
     id: "",
     value: "",
@@ -21,12 +22,12 @@ export default observer(function CityForm() {
   }
 
   function handleInputChange(event) {
-    const {name, value} = event.target;
-    setCity({...city, [name]: value});
+    const { name, value } = event.target;
+    setCity({ ...city, [name]: value });
   }
 
   return (
-    <Segment clearing style={{width: "150%", textAlign: "left"}}>
+    <Segment clearing style={{ width: "150%", textAlign: "left" }}>
       <Form onSubmit={handleSubmit} autoComplete="off">
         <Form.Input
           placeholder="Name"

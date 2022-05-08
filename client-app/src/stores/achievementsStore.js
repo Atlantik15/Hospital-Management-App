@@ -1,108 +1,109 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
 
-export default class AchievementsStore{
-    //achievements = [];
-    achievementRegistry = new Map();
-    selectedAchievement = null;
-    editMode = false;
-    loading = false;
-    loadingInitial = true;
+export default class AchievementsStore {
+  //achievements = [];
+  achievementRegistry = new Map();
+  selectedAchievement = null;
+  editMode = false;
+  loading = false;
+  loadingInitial = true;
 
-    constructor(){
-        makeAutoObservable(this)
+  constructor() {
+    makeAutoObservable(this);
+  }
+
+  get achievementsByTitle() {
+    return Array.from(this.achievementRegistry.values());
+  }
+
+  loadAchievements = async () => {
+    try {
+      const achievements = await agent.Achievements.list();
+      achievements.forEach((achievement) => {
+        this.achievementRegistry.set(achievement.id, achievement);
+      });
+      this.setLoadingInitial(false);
+    } catch (error) {
+      console.log(error);
+      this.setLoadingInitial(false);
     }
+  };
 
-    get achievementsByTitle(){
-        return Array.from(this.achievementRegistry.values())
-    }
+  setLoadingInitial = (state) => {
+    this.loadingInitial = state;
+  };
 
-    loadAchievements = async () => {
-        try{
-            const achievements = await agent.Achievements.list();
-                achievements.forEach(achievement => {
-                    this.achievementRegistry.set(achievement.id, achievement);
-                })
-            this.setLoadingInitial(false);
-        } catch (error){
-            console.log(error);
-            this.setLoadingInitial(false);
-        }
-    }
+  selectAchievement = (id) => {
+    this.selectedAchievement = this.achievementRegistry.get(id);
+  };
 
-    setLoadingInitial = (state) => {
-        this.loadingInitial = state;
-    }
+  cancelSelectedAchievement = () => {
+    this.selectedAchievement = undefined;
+  };
 
-    selectAchievement = (id) => {
-        this.selectedAchievement = this.achievementRegistry.get(id);
-    }
+  openForm = (id) => {
+    id ? this.selectAchievement(id) : this.cancelSelectedAchievement();
+    this.editMode = true;
+  };
 
-    cancelSelectedAchievement = () => {
-        this.selectedAchievement = undefined;
-    }
+  closeForm = () => {
+    this.editMode = false;
+  };
 
-    openForm = (id) => {
-        id ? this.selectAchievement(id) : this.cancelSelectedAchievement();
-        this.editMode = true;
-    }
-
-    closeForm = () => {
+  createAchievement = async (achievement) => {
+    this.loading = true;
+    achievement.id = uuid();
+    try {
+      await agent.Achievements.create(achievement);
+      runInAction(() => {
+        this.achievementRegistry.set(achievement.id, achievement);
+        this.selectedAchievement = achievement;
         this.editMode = false;
+        this.loading = false;
+      });
+    } catch (error) {
+      console.log(error);
+      runInAction(() => {
+        this.loading = false;
+      });
     }
+  };
 
-    createAchievement = async (achievement) => {
-        this.loading = true;
-        achievement.id = uuid();
-        try{
-            await agent.Achievements.create(achievement);
-            runInAction(() => {
-                this.achievementRegistry.set(achievement.id, achievement);
-                this.selectedAchievement = achievement;
-                this.editMode = false;
-                this.loading = false;
-            })
-        } catch (error) {
-            console.log(error);
-            runInAction(() => {
-                this.loading = false;
-            })
-        }
+  updateAchievement = async (achievement) => {
+    this.loading = true;
+    try {
+      await agent.Achievements.update(achievement);
+      runInAction(() => {
+        this.achievementRegistry.set(achievement.id, achievement);
+        this.selectedAchievement = achievement;
+        this.editMode = false;
+        this.loading = false;
+      });
+    } catch (error) {
+      console.log(error);
+      runInAction(() => {
+        this.loading = false;
+      });
     }
+  };
 
-    updateAchievement = async (achievement) => {
-        this.loading = true;
-        try{
-            await agent.Achievements.update(achievement);
-            runInAction(() => {
-                this.achievementRegistry.set(achievement.id, achievement);
-                this.selectedAchievement = achievement;
-                this.editMode = false;
-                this.loading = false;           
-            })
-        }catch(error){
-            console.log(error);
-            runInAction(() => {
-                this.loading = false;
-            })
-        }
+  deleteAchievement = async (id) => {
+    this.loading = true;
+    try {
+      await agent.Achievements.delete(id);
+      runInAction(() => {
+        this.achievementRegistry.delete(id);
+        if (this.selectedAchievement?.id === id)
+          this.cancelSelectedAchievement();
+        this.loading = false;
+      });
+    } catch (error) {
+      console.log(error);
+      runInAction(() => {
+        this.loading = false;
+      });
     }
-
-    deleteAchievement = async(id) => {
-        this.loading = true;
-        try{
-            await agent.Achievements.delete(id);
-            runInAction(() => {
-                this.achievementRegistry.delete(id);
-                if(this.selectedAchievement?.id === id) this.cancelSelectedAchievement();
-                this.loading = false; 
-            })
-        }catch(error){
-            console.log(error);
-            runInAction(() => {
-                this.loading = false;
-            })
-        }
-    }
+  };
 }

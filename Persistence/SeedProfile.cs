@@ -6,13 +6,13 @@ using Domain;
 
 namespace Persistence
 {
-    public class SeedProfile
+  public class SeedProfile
+  {
+    public static async Task SeedData(DataContext context)
     {
-        public static async Task SeedData(DataContext context)
-        {
-            if (context.PAllergies.Any()) return;
+      if (context.PAllergies.Any()) return;
 
-            var allergies = new List<PAllergies>
+      var allergies = new List<PAllergies>
             {
                 new PAllergies
                 {
@@ -26,13 +26,14 @@ namespace Persistence
                 }
             };
 
-            await context.PAllergies.AddRangeAsync(allergies);
-            await context.SaveChangesAsync();
+      await context.PAllergies.AddRangeAsync(allergies);
+      await context.SaveChangesAsync();
 
 
-            if (context.BodyInfos.Any()) {
+      if (context.BodyInfos.Any())
+      {
 
-            var bodyinfos = new List<BodyInfo>
+        var bodyinfos = new List<BodyInfo>
             {
                 new BodyInfo
                 {
@@ -43,13 +44,14 @@ namespace Persistence
                 }
 
             };
-            await context.BodyInfos.AddRangeAsync(bodyinfos);
-            await context.SaveChangesAsync();
-            }
+        await context.BodyInfos.AddRangeAsync(bodyinfos);
+        await context.SaveChangesAsync();
+      }
 
-            if (context.PatientHistories.Any()) {
+      if (context.PatientHistories.Any())
+      {
 
-            var patienthistories = new List<PatientHistory>
+        var patienthistories = new List<PatientHistory>
             {
                 new PatientHistory
                 {
@@ -63,13 +65,14 @@ namespace Persistence
                 }
 
             };
-            await context.PatientHistories.AddRangeAsync(patienthistories);
-            await context.SaveChangesAsync();
-            }
+        await context.PatientHistories.AddRangeAsync(patienthistories);
+        await context.SaveChangesAsync();
+      }
 
-            if (context.LabTests.Any()) {
+      if (context.LabTests.Any())
+      {
 
-            var labtests = new List<LabTest>
+        var labtests = new List<LabTest>
             {
                 new LabTest
                 {
@@ -85,11 +88,11 @@ namespace Persistence
                 }
 
             };
-            await context.LabTests.AddRangeAsync(labtests);
-            await context.SaveChangesAsync();
-            }
+        await context.LabTests.AddRangeAsync(labtests);
+        await context.SaveChangesAsync();
+      }
 
 
-        }
     }
+  }
 }

@@ -10,24 +10,24 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.Procedures
 {
-    public class List
+  public class List
+  {
+    public class Query : IRequest<List<Procedure>> { }
+
+    public class Handler : IRequestHandler<Query, List<Procedure>>
     {
-        public class Query : IRequest<List<Procedure>> { }
+      private readonly DataContext context;
 
-        public class Handler : IRequestHandler<Query, List<Procedure>>
-        {
-            private readonly DataContext context;
+      public Handler(DataContext context)
+      {
+        this.context = context;
+      }
 
-            public Handler(DataContext context)
-            {
-                this.context = context;
-            }
+      public async Task<List<Procedure>> Handle(Query request, CancellationToken cancellationToken)
+      {
 
-            public async Task<List<Procedure>> Handle(Query request, CancellationToken cancellationToken)
-            {
-              
-                return await context.Procedures.ToListAsync(cancellationToken);
-            }
-        }
+        return await context.Procedures.ToListAsync(cancellationToken);
+      }
     }
+  }
 }

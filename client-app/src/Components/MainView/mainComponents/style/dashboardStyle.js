@@ -1,7 +1,7 @@
 import {
   successColor,
   whiteColor,
-  hexToRgb
+  hexToRgb,
 } from "./material-dashboard-react.js";
 
 const dashboardStyle = {
@@ -11,14 +11,14 @@ const dashboardStyle = {
     fontSize: "14px",
     marginTop: "0",
     paddingTop: "10px",
-    marginBottom: "0"
+    marginBottom: "0",
   },
   cardCategoryWhite: {
     color: "rgba(" + hexToRgb(whiteColor) + ",.62)",
     margin: "0",
     fontSize: "14px",
     marginTop: "0",
-    marginBottom: "0"
+    marginBottom: "0",
   },
   cardTitle: {
     color: "#808080 ",
@@ -31,8 +31,8 @@ const dashboardStyle = {
     "& small": {
       color: "#808080",
       fontWeight: "400",
-      lineHeight: "1"
-    }
+      lineHeight: "1",
+    },
   },
   cardTitleWhite: {
     color: whiteColor,
@@ -45,9 +45,9 @@ const dashboardStyle = {
     "& small": {
       color: "#808080 ",
       fontWeight: "400",
-      lineHeight: "1"
-    }
-  }
+      lineHeight: "1",
+    },
+  },
 };
 
 export default dashboardStyle;

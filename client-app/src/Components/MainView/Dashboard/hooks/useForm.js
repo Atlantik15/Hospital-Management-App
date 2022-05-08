@@ -1,29 +1,28 @@
-import React,{ useState } from 'react'
+import React, { useState } from "react";
 
-export function useForm(getModelObject){
+export function useForm(getModelObject) {
+  const [values, setValues] = useState(getModelObject());
+  const [errors, setErrors] = useState({});
 
-    const [values,setValues]=useState(getModelObject());
-    const [errors,setErrors]=useState({});
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
 
-    const handleInputChange=e=>{
-        const{name,value}= e.target
-        setValues({
-            ... values,
-            [name]:value
-        })
-    }
+  const resetFormControls = () => {
+    setValues(getModelObject());
+    setErrors({});
+  };
 
-    const resetFormControls=()=>{
-        setValues(getModelObject());
-        setErrors({})
-    }
-
-    return{
-        values,
-        setValues,
-        errors,
-        setErrors,
-        handleInputChange,
-        resetFormControls
-    }
+  return {
+    values,
+    setValues,
+    errors,
+    setErrors,
+    handleInputChange,
+    resetFormControls,
+  };
 }

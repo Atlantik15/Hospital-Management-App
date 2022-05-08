@@ -9,701 +9,701 @@ using Persistence;
 
 namespace Persistence.Migrations
 {
-    [DbContext(typeof(DataContext))]
-    [Migration("20220414204207_initialCreate")]
-    partial class initialCreate
+  [DbContext(typeof(DataContext))]
+  [Migration("20220414204207_initialCreate")]
+  partial class initialCreate
+  {
+    protected override void BuildTargetModel(ModelBuilder modelBuilder)
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
-        {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.3")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+      modelBuilder
+          .HasAnnotation("Relational:MaxIdentifierLength", 128)
+          .HasAnnotation("ProductVersion", "5.0.3")
+          .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Domain.About", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+      modelBuilder.Entity("Domain.About", b =>
+          {
+            b.Property<Guid>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Description")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Title")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.ToTable("About");
-                });
+            b.ToTable("About");
+          });
 
-            modelBuilder.Entity("Domain.AboutUs", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+      modelBuilder.Entity("Domain.AboutUs", b =>
+          {
+            b.Property<Guid>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Text")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Text")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Title")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.ToTable("SAboutUs");
-                });
+            b.ToTable("SAboutUs");
+          });
 
-            modelBuilder.Entity("Domain.Achievement", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+      modelBuilder.Entity("Domain.Achievement", b =>
+          {
+            b.Property<Guid>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Description")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Photo")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Photo")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Title")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.ToTable("Achievements");
-                });
+            b.ToTable("Achievements");
+          });
 
-            modelBuilder.Entity("Domain.Activity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+      modelBuilder.Entity("Domain.Activity", b =>
+          {
+            b.Property<Guid>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
+            b.Property<int>("Age")
+                      .HasColumnType("int");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Type")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.ToTable("Activities");
-                });
+            b.ToTable("Activities");
+          });
 
-            modelBuilder.Entity("Domain.AddAppointment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+      modelBuilder.Entity("Domain.AddAppointment", b =>
+          {
+            b.Property<int>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("int")
+                      .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("AppointmentDate")
-                        .HasColumnType("datetime2");
+            b.Property<DateTime>("AppointmentDate")
+                      .HasColumnType("datetime2");
 
-                    b.Property<string>("CustomerName")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("CustomerName")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DoctorName")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("DoctorName")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Service")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Service")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Status")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.ToTable("Appointments");
-                });
+            b.ToTable("Appointments");
+          });
 
-            modelBuilder.Entity("Domain.AppUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+      modelBuilder.Entity("Domain.AppUser", b =>
+          {
+            b.Property<string>("Id")
+                      .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
+            b.Property<int>("AccessFailedCount")
+                      .HasColumnType("int");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("ConcurrencyStamp")
+                      .IsConcurrencyToken()
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Country")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Country")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DateOfBirth")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("DateOfBirth")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+            b.Property<string>("Email")
+                      .HasMaxLength(256)
+                      .HasColumnType("nvarchar(256)");
 
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
+            b.Property<bool>("EmailConfirmed")
+                      .HasColumnType("bit");
 
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("FirstName")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Gender")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("LastName")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
+            b.Property<bool>("LockoutEnabled")
+                      .HasColumnType("bit");
 
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
+            b.Property<DateTimeOffset?>("LockoutEnd")
+                      .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+            b.Property<string>("NormalizedEmail")
+                      .HasMaxLength(256)
+                      .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+            b.Property<string>("NormalizedUserName")
+                      .HasMaxLength(256)
+                      .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("PasswordHash")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("PhoneNumber")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
+            b.Property<bool>("PhoneNumberConfirmed")
+                      .HasColumnType("bit");
 
-                    b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Role")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("SecurityStamp")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
+            b.Property<bool>("TwoFactorEnabled")
+                      .HasColumnType("bit");
 
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+            b.Property<string>("UserName")
+                      .HasMaxLength(256)
+                      .HasColumnType("nvarchar(256)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
+            b.HasIndex("NormalizedEmail")
+                      .HasDatabaseName("EmailIndex");
 
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+            b.HasIndex("NormalizedUserName")
+                      .IsUnique()
+                      .HasDatabaseName("UserNameIndex")
+                      .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("AspNetUsers");
-                });
+            b.ToTable("AspNetUsers");
+          });
 
-            modelBuilder.Entity("Domain.BirthRaport", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+      modelBuilder.Entity("Domain.BirthRaport", b =>
+          {
+            b.Property<int>("id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("int")
+                      .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("PatientId")
-                        .HasColumnType("nvarchar(450)");
+            b.Property<string>("PatientId")
+                      .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("birthDate")
-                        .HasColumnType("Date");
+            b.Property<DateTime>("birthDate")
+                      .HasColumnType("Date");
 
-                    b.Property<string>("childName")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("childName")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("fatherName")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("fatherName")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("gender")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("gender")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("weight")
-                        .HasColumnType("float");
+            b.Property<double>("weight")
+                      .HasColumnType("float");
 
-                    b.HasKey("id");
+            b.HasKey("id");
 
-                    b.HasIndex("PatientId");
+            b.HasIndex("PatientId");
 
-                    b.ToTable("BirthRaports");
-                });
+            b.ToTable("BirthRaports");
+          });
 
-            modelBuilder.Entity("Domain.BodyInfo", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+      modelBuilder.Entity("Domain.BodyInfo", b =>
+          {
+            b.Property<Guid>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("uniqueidentifier");
 
-                    b.Property<double>("Gjatesia")
-                        .HasColumnType("float");
+            b.Property<double>("Gjatesia")
+                      .HasColumnType("float");
 
-                    b.Property<string>("GrupiGjakut")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("GrupiGjakut")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Mosha")
-                        .HasColumnType("int");
+            b.Property<int>("Mosha")
+                      .HasColumnType("int");
 
-                    b.Property<double>("Pesha")
-                        .HasColumnType("float");
+            b.Property<double>("Pesha")
+                      .HasColumnType("float");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.ToTable("BodyInfos");
-                });
+            b.ToTable("BodyInfos");
+          });
 
-            modelBuilder.Entity("Domain.City", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+      modelBuilder.Entity("Domain.City", b =>
+          {
+            b.Property<Guid>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Country")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Country")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Text")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Text")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Value")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.ToTable("Cities");
-                });
+            b.ToTable("Cities");
+          });
 
-            modelBuilder.Entity("Domain.Country", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+      modelBuilder.Entity("Domain.Country", b =>
+          {
+            b.Property<Guid>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Flag")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Flag")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Text")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Text")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Value")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.ToTable("Countries");
-                });
+            b.ToTable("Countries");
+          });
 
-            modelBuilder.Entity("Domain.DReminder", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+      modelBuilder.Entity("Domain.DReminder", b =>
+          {
+            b.Property<int>("id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("int")
+                      .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("reminderDate")
-                        .HasColumnType("Date");
+            b.Property<DateTime>("reminderDate")
+                      .HasColumnType("Date");
 
-                    b.Property<string>("reminderTitle")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("reminderTitle")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+            b.HasKey("id");
 
-                    b.ToTable("DReminders");
-                });
+            b.ToTable("DReminders");
+          });
 
-            modelBuilder.Entity("Domain.DeathRaport", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+      modelBuilder.Entity("Domain.DeathRaport", b =>
+          {
+            b.Property<int>("id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("int")
+                      .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("causeOfDeath")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("causeOfDeath")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("deathDate")
-                        .HasColumnType("Date");
+            b.Property<DateTime>("deathDate")
+                      .HasColumnType("Date");
 
-                    b.HasKey("id");
+            b.HasKey("id");
 
-                    b.ToTable("DeathRaports");
-                });
+            b.ToTable("DeathRaports");
+          });
 
-            modelBuilder.Entity("Domain.LabTest", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+      modelBuilder.Entity("Domain.LabTest", b =>
+          {
+            b.Property<Guid>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Date")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Date")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Location")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Location")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Name")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.ToTable("LabTests");
-                });
+            b.ToTable("LabTests");
+          });
 
-            modelBuilder.Entity("Domain.PAllergies", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+      modelBuilder.Entity("Domain.PAllergies", b =>
+          {
+            b.Property<Guid>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Description")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Type")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.ToTable("PAllergies");
-                });
+            b.ToTable("PAllergies");
+          });
 
-            modelBuilder.Entity("Domain.PatientHistory", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+      modelBuilder.Entity("Domain.PatientHistory", b =>
+          {
+            b.Property<Guid>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Date")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Date")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Descritpion")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Descritpion")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.ToTable("PatientHistories");
-                });
+            b.ToTable("PatientHistories");
+          });
 
-            modelBuilder.Entity("Domain.Prescription", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+      modelBuilder.Entity("Domain.Prescription", b =>
+          {
+            b.Property<int>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("int")
+                      .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CustomerName")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("CustomerName")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DoctorName")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("DoctorName")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Number")
-                        .HasColumnType("int");
+            b.Property<int>("Number")
+                      .HasColumnType("int");
 
-                    b.Property<string>("RX")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("RX")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.ToTable("Prescriptions");
-                });
+            b.ToTable("Prescriptions");
+          });
 
-            modelBuilder.Entity("Domain.Procedure", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+      modelBuilder.Entity("Domain.Procedure", b =>
+          {
+            b.Property<Guid>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+            b.Property<DateTime>("Date")
+                      .HasColumnType("datetime2");
 
-                    b.Property<string>("LocationOnBody")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("LocationOnBody")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Name")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.ToTable("Procedures");
-                });
+            b.ToTable("Procedures");
+          });
 
-            modelBuilder.Entity("Domain.WorkingHour", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+      modelBuilder.Entity("Domain.WorkingHour", b =>
+          {
+            b.Property<int>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("int")
+                      .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("From")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("From")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Name")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("To")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("To")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.ToTable("WorkingHours");
-                });
+            b.ToTable("WorkingHours");
+          });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+      modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+          {
+            b.Property<string>("Id")
+                      .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("ConcurrencyStamp")
+                      .IsConcurrencyToken()
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+            b.Property<string>("Name")
+                      .HasMaxLength(256)
+                      .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("NormalizedName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+            b.Property<string>("NormalizedName")
+                      .HasMaxLength(256)
+                      .HasColumnType("nvarchar(256)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasDatabaseName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
+            b.HasIndex("NormalizedName")
+                      .IsUnique()
+                      .HasDatabaseName("RoleNameIndex")
+                      .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.ToTable("AspNetRoles");
-                });
+            b.ToTable("AspNetRoles");
+          });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+      modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+          {
+            b.Property<int>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("int")
+                      .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("ClaimType")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("ClaimValue")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+            b.Property<string>("RoleId")
+                      .IsRequired()
+                      .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.HasIndex("RoleId");
+            b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetRoleClaims");
-                });
+            b.ToTable("AspNetRoleClaims");
+          });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+      modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+          {
+            b.Property<int>("Id")
+                      .ValueGeneratedOnAdd()
+                      .HasColumnType("int")
+                      .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("ClaimType")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("ClaimValue")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+            b.Property<string>("UserId")
+                      .IsRequired()
+                      .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("Id");
+            b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+            b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserClaims");
-                });
+            b.ToTable("AspNetUserClaims");
+          });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                {
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+      modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+          {
+            b.Property<string>("LoginProvider")
+                      .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+            b.Property<string>("ProviderKey")
+                      .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("ProviderDisplayName")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+            b.Property<string>("UserId")
+                      .IsRequired()
+                      .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("LoginProvider", "ProviderKey");
+            b.HasKey("LoginProvider", "ProviderKey");
 
-                    b.HasIndex("UserId");
+            b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserLogins");
-                });
+            b.ToTable("AspNetUserLogins");
+          });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+      modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+          {
+            b.Property<string>("UserId")
+                      .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+            b.Property<string>("RoleId")
+                      .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("UserId", "RoleId");
+            b.HasKey("UserId", "RoleId");
 
-                    b.HasIndex("RoleId");
+            b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetUserRoles");
-                });
+            b.ToTable("AspNetUserRoles");
+          });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+      modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+          {
+            b.Property<string>("UserId")
+                      .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+            b.Property<string>("LoginProvider")
+                      .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+            b.Property<string>("Name")
+                      .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Value")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserId", "LoginProvider", "Name");
+            b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("AspNetUserTokens");
-                });
+            b.ToTable("AspNetUserTokens");
+          });
 
-            modelBuilder.Entity("Domain.Doctor", b =>
-                {
-                    b.HasBaseType("Domain.AppUser");
+      modelBuilder.Entity("Domain.Doctor", b =>
+          {
+            b.HasBaseType("Domain.AppUser");
 
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Address")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BloodGroup")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("BloodGroup")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Degree")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Degree")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Department")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Department")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Designation")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Designation")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Specialist")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Specialist")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Doctors");
-                });
+            b.ToTable("Doctors");
+          });
 
-            modelBuilder.Entity("Domain.Patient", b =>
-                {
-                    b.HasBaseType("Domain.AppUser");
+      modelBuilder.Entity("Domain.Patient", b =>
+          {
+            b.HasBaseType("Domain.AppUser");
 
-                    b.Property<string>("BloodGroup")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("BloodGroup")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Disease")
-                        .HasColumnType("nvarchar(max)");
+            b.Property<string>("Disease")
+                      .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Patients");
-                });
+            b.ToTable("Patients");
+          });
 
-            modelBuilder.Entity("Domain.BirthRaport", b =>
-                {
-                    b.HasOne("Domain.Patient", "Patients")
-                        .WithMany("BirthRaports")
-                        .HasForeignKey("PatientId");
+      modelBuilder.Entity("Domain.BirthRaport", b =>
+          {
+            b.HasOne("Domain.Patient", "Patients")
+                      .WithMany("BirthRaports")
+                      .HasForeignKey("PatientId");
 
-                    b.Navigation("Patients");
-                });
+            b.Navigation("Patients");
+          });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+      modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+          {
+            b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                      .WithMany()
+                      .HasForeignKey("RoleId")
+                      .OnDelete(DeleteBehavior.Cascade)
+                      .IsRequired();
+          });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
-                {
-                    b.HasOne("Domain.AppUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+      modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+          {
+            b.HasOne("Domain.AppUser", null)
+                      .WithMany()
+                      .HasForeignKey("UserId")
+                      .OnDelete(DeleteBehavior.Cascade)
+                      .IsRequired();
+          });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                {
-                    b.HasOne("Domain.AppUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+      modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+          {
+            b.HasOne("Domain.AppUser", null)
+                      .WithMany()
+                      .HasForeignKey("UserId")
+                      .OnDelete(DeleteBehavior.Cascade)
+                      .IsRequired();
+          });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+      modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+          {
+            b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                      .WithMany()
+                      .HasForeignKey("RoleId")
+                      .OnDelete(DeleteBehavior.Cascade)
+                      .IsRequired();
 
-                    b.HasOne("Domain.AppUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+            b.HasOne("Domain.AppUser", null)
+                      .WithMany()
+                      .HasForeignKey("UserId")
+                      .OnDelete(DeleteBehavior.Cascade)
+                      .IsRequired();
+          });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                {
-                    b.HasOne("Domain.AppUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+      modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+          {
+            b.HasOne("Domain.AppUser", null)
+                      .WithMany()
+                      .HasForeignKey("UserId")
+                      .OnDelete(DeleteBehavior.Cascade)
+                      .IsRequired();
+          });
 
-            modelBuilder.Entity("Domain.Doctor", b =>
-                {
-                    b.HasOne("Domain.AppUser", null)
-                        .WithOne()
-                        .HasForeignKey("Domain.Doctor", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-                });
+      modelBuilder.Entity("Domain.Doctor", b =>
+          {
+            b.HasOne("Domain.AppUser", null)
+                      .WithOne()
+                      .HasForeignKey("Domain.Doctor", "Id")
+                      .OnDelete(DeleteBehavior.ClientCascade)
+                      .IsRequired();
+          });
 
-            modelBuilder.Entity("Domain.Patient", b =>
-                {
-                    b.HasOne("Domain.AppUser", null)
-                        .WithOne()
-                        .HasForeignKey("Domain.Patient", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-                });
+      modelBuilder.Entity("Domain.Patient", b =>
+          {
+            b.HasOne("Domain.AppUser", null)
+                      .WithOne()
+                      .HasForeignKey("Domain.Patient", "Id")
+                      .OnDelete(DeleteBehavior.ClientCascade)
+                      .IsRequired();
+          });
 
-            modelBuilder.Entity("Domain.Patient", b =>
-                {
-                    b.Navigation("BirthRaports");
-                });
+      modelBuilder.Entity("Domain.Patient", b =>
+          {
+            b.Navigation("BirthRaports");
+          });
 #pragma warning restore 612, 618
-        }
     }
+  }
 }

@@ -3,11 +3,11 @@ using Domain;
 
 namespace Application.AchievementsCore
 {
-    public class MappingProfiles : Profile
+  public class MappingProfiles : Profile
+  {
+    public MappingProfiles()
     {
-        public MappingProfiles()
-        {
-            CreateMap<Achievement,Achievement>();
-        }
+      CreateMap<Achievement, Achievement>();
     }
+  }
 }

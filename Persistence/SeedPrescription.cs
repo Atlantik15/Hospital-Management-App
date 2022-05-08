@@ -6,12 +6,12 @@ using Domain;
 
 namespace Persistence
 {
-    public class SeedPrescription
+  public class SeedPrescription
+  {
+    public static async Task SeedData(DataContext context)
     {
-        public static async Task SeedData(DataContext context)
-        {
-            if(context.Prescriptions.Any()) return;
-            var prescriptions = new List<Prescription>
+      if (context.Prescriptions.Any()) return;
+      var prescriptions = new List<Prescription>
             {
                 new Prescription
                 {
@@ -22,8 +22,8 @@ namespace Persistence
                 }
             };
 
-            await context.Prescriptions.AddRangeAsync(prescriptions);
-            await context.SaveChangesAsync();
-        }
+      await context.Prescriptions.AddRangeAsync(prescriptions);
+      await context.SaveChangesAsync();
     }
+  }
 }

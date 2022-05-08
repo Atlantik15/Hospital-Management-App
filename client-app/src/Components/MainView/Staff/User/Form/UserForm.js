@@ -1,11 +1,11 @@
-import React, {useState} from "react";
-import {Form, Segment, Button} from "semantic-ui-react";
-import {useStore} from "../../../../../stores/store";
-import {observer} from "mobx-react-lite";
+import React, { useState } from "react";
+import { Form, Segment, Button } from "semantic-ui-react";
+import { useStore } from "../../../../../stores/store";
+import { observer } from "mobx-react-lite";
 
 export default observer(function UserForm() {
-  const {userStore} = useStore();
-  const {selectedUser, closeForm, updateUser, loading} = userStore;
+  const { userStore } = useStore();
+  const { selectedUser, closeForm, updateUser, loading } = userStore;
   const initialState = selectedUser ?? {
     id: "",
     firstName: "",
@@ -23,14 +23,14 @@ export default observer(function UserForm() {
   }
 
   function handleInputChange(event) {
-    const {name, value} = event.target;
-    setUser({...user, [name]: value});
+    const { name, value } = event.target;
+    setUser({ ...user, [name]: value });
   }
 
   return (
     <Segment clearing>
       <Form
-        style={{textAlign: "left"}}
+        style={{ textAlign: "left" }}
         onSubmit={handleSubmit}
         autoComplete="off"
       >

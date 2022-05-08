@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useLayoutEffect} from "react";
-import {AnimatePresence, motion} from "framer-motion";
-import {Link} from "react-router-dom";
+import React, { useState, useEffect, useLayoutEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import * as s from "./Sidebar.styles";
-import {useStore} from "../../stores/store";
-import {Button} from "semantic-ui-react";
+import { useStore } from "../../stores/store";
+import { Button } from "semantic-ui-react";
 
 const Sidebar = (props) => {
   const {
@@ -31,7 +31,7 @@ const Sidebar = (props) => {
   const [header, setHeader] = useState(sidebarHeader.fullName);
   const [subMenusStates, setSubmenus] = useState({});
   const {
-    userStore: {logout},
+    userStore: { logout },
   } = useStore();
 
   useLayoutEffect(() => {
@@ -139,7 +139,7 @@ const Sidebar = (props) => {
         return (
           <Link
             to={`${item.to}${subMenuItem.to}`}
-            style={{textDecoration: "none"}}
+            style={{ textDecoration: "none" }}
             key={subMenuItemIndex}
           >
             <s.subMenuItem
@@ -155,7 +155,7 @@ const Sidebar = (props) => {
     );
     return (
       <s.ItemContainer key={index}>
-        <Link to={item.to} style={{textDecoration: "none"}}>
+        <Link to={item.to} style={{ textDecoration: "none" }}>
           <s.MenuItem
             font={fonts.menu}
             selected={isItemSelected}
@@ -172,10 +172,10 @@ const Sidebar = (props) => {
         <AnimatePresence>
           {hasSubmenus && isOpen && (
             <motion.nav
-              initial={{opacity: 0, y: -15}}
-              animate={{opacity: 1, y: 0}}
-              transition={{duration: 0.35}}
-              exit={{opacity: 0, x: -30}}
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
+              exit={{ opacity: 0, x: -30 }}
             >
               <s.SubMenuItemContainer
                 isSidebarOpen={isSidebarOpen}
@@ -201,7 +201,7 @@ const Sidebar = (props) => {
         <s.Toggler />
       </s.TogglerContainer>
       <Button
-        style={{margin: "70px 0 0 20px"}}
+        style={{ margin: "70px 0 0 20px" }}
         onClick={logout}
         icon="log out"
       />

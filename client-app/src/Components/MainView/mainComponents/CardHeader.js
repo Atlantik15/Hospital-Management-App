@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-
 import styles from "./style/cardHeaderStyle.js";
 
 const useStyles = makeStyles(styles);
@@ -20,7 +19,7 @@ export default function CardHeader(props) {
     [classes.cardHeaderPlain]: plain,
     [classes.cardHeaderStats]: stats,
     [classes.cardHeaderIcon]: icon,
-    [className]: className !== undefined
+    [className]: className !== undefined,
   });
   return (
     <div className={cardHeaderClasses} {...rest}>
@@ -37,10 +36,11 @@ CardHeader.propTypes = {
     "danger",
     "info",
     "primary",
-    "rose","purpleColor"
+    "rose",
+    "purpleColor",
   ]),
   plain: PropTypes.bool,
   stats: PropTypes.bool,
   icon: PropTypes.bool,
-  children: PropTypes.node
+  children: PropTypes.node,
 };

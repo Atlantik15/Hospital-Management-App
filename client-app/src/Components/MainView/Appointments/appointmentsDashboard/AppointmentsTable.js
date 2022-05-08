@@ -1,21 +1,21 @@
-import { observer } from 'mobx-react-lite';
-import React, { useState } from 'react';
-import { useStore } from '../../../../stores/store';
+import { observer } from "mobx-react-lite";
+import React, { useState } from "react";
+import { useStore } from "../../../../stores/store";
 
 export default observer(function AppointmentsTable() {
-  const {appointmentsStore, userStore} = useStore();
-  const {deleteAppointment, appointmentsByDate, loading} = appointmentsStore;
-  const {user} = userStore;
+  const { appointmentsStore, userStore } = useStore();
+  const { deleteAppointment, appointmentsByDate, loading } = appointmentsStore;
+  const { user } = userStore;
 
-  const [target, setTarget] = useState('');
+  const [target, setTarget] = useState("");
 
-  function handleAppointmentDelete(e, id){
+  function handleAppointmentDelete(e, id) {
     setTarget(e.currentTarget.name);
     deleteAppointment(id);
   }
-  
+
   return (
-    <div className='main'>
+    <div className="main">
       <thead>
         <tr>
           <th>No #.</th>
@@ -24,7 +24,9 @@ export default observer(function AppointmentsTable() {
           <th>Doctor Name</th>
           <th>Services</th>
           <th>Status</th>
-          {(user.role === "Patient" || user.role === "superadmin"  || user.role === "receptionist")&&(
+          {(user.role === "Patient" ||
+            user.role === "superadmin" ||
+            user.role === "receptionist") && (
             <>
               <th>Delete</th>
               <th>Edit</th>
@@ -33,7 +35,7 @@ export default observer(function AppointmentsTable() {
         </tr>
       </thead>
       <tbody>
-        {appointmentsByDate.map(appointment =>
+        {appointmentsByDate.map((appointment) => (
           <tr key={appointment.id}>
             <td>{appointment.id}</td>
             <td>{appointment.customerName}</td>
@@ -41,18 +43,35 @@ export default observer(function AppointmentsTable() {
             <td>{appointment.doctorName}</td>
             <td>{appointment.service}</td>
             <td>{appointment.status}</td>
-            {(user.role === "Patient" || user.role === "superadmin"  || user.role === "receptionist")&&(
+            {(user.role === "Patient" ||
+              user.role === "superadmin" ||
+              user.role === "receptionist") && (
               <>
-              <td><button class="btn"
-                name={appointment.id} 
-                loading={loading && target === appointment.id} 
-                onClick={(e) => handleAppointmentDelete(e, appointment.id)}>
-              <i class="fa fa-trash"></i></button></td>
-              <td><button class="btn" onClick={() => appointmentsStore.selectAppointment(appointment.id)}><i class="fa fa-edit"></i></button></td>
+                <td>
+                  <button
+                    class="btn"
+                    name={appointment.id}
+                    loading={loading && target === appointment.id}
+                    onClick={(e) => handleAppointmentDelete(e, appointment.id)}
+                  >
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
+                <td>
+                  <button
+                    class="btn"
+                    onClick={() =>
+                      appointmentsStore.selectAppointment(appointment.id)
+                    }
+                  >
+                    <i class="fa fa-edit"></i>
+                  </button>
+                </td>
               </>
             )}
-          </tr>)}
+          </tr>
+        ))}
       </tbody>
     </div>
-  )
-})
+  );
+});

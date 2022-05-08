@@ -1,10 +1,10 @@
 import React from "react";
-import {Button, Segment, Flag} from "semantic-ui-react";
+import { Button, Segment, Flag } from "semantic-ui-react";
 import LoadingComponent from "../../../../../LoadingComponent";
-import {useStore} from "../../../../../stores/store";
+import { useStore } from "../../../../../stores/store";
 
 export default function CountryDetails() {
-  const {countryStore} = useStore();
+  const { countryStore } = useStore();
   const {
     selectedCountry: country,
     openForm,
@@ -13,16 +13,16 @@ export default function CountryDetails() {
 
   if (!country) return <LoadingComponent />;
   return (
-    <Segment clearing style={{width: "150%", textAlign: "left"}}>
-      <p style={{marginBottom: "10px"}}>
+    <Segment clearing style={{ width: "150%", textAlign: "left" }}>
+      <p style={{ marginBottom: "10px" }}>
         <b>Name: </b>
         {country.text}
       </p>
-      <p style={{marginBottom: "10px"}}>
+      <p style={{ marginBottom: "10px" }}>
         <b>Value: </b>
         {country.value}
       </p>
-      <p style={{marginBottom: "10px"}}>
+      <p style={{ marginBottom: "10px" }}>
         <b>Flag: </b>
         <Flag name={country.flag} />
       </p>

@@ -3,11 +3,11 @@ using Domain;
 
 namespace Application.WorkingHoursCore
 {
-    public class MappingProfiles : Profile
+  public class MappingProfiles : Profile
+  {
+    public MappingProfiles()
     {
-        public MappingProfiles()
-        {
-            CreateMap<WorkingHour,WorkingHour>();
-        }
+      CreateMap<WorkingHour, WorkingHour>();
     }
+  }
 }

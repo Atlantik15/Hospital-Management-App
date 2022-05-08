@@ -1,11 +1,11 @@
 import React from "react";
-import {Button, Segment} from "semantic-ui-react";
+import { Button, Segment } from "semantic-ui-react";
 import LoadingComponent from "../../../../../LoadingComponent";
-import {useStore} from "../../../../../stores/store";
+import { useStore } from "../../../../../stores/store";
 
 export default function UserDetails() {
-  const {userStore} = useStore();
-  const {selectedUser: user, openForm, cancelSelectedUser} = userStore;
+  const { userStore } = useStore();
+  const { selectedUser: user, openForm, cancelSelectedUser } = userStore;
 
   if (!user) return <LoadingComponent />;
   return (
@@ -40,7 +40,7 @@ export default function UserDetails() {
         {user.role}
       </p>
 
-      <Button.Group widths="2" style={{marginTop: "20px"}}>
+      <Button.Group widths="2" style={{ marginTop: "20px" }}>
         <Button
           onClick={() => openForm(user.id)}
           basic

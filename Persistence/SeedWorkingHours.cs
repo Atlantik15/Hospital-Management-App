@@ -6,14 +6,14 @@ using Domain;
 
 namespace Persistence
 {
-    public class SeedWorkingHours
+  public class SeedWorkingHours
+  {
+    public static async Task SeedData(DataContext context)
     {
-        public static async Task SeedData(DataContext context)
-        {
 
-            if (context.WorkingHours.Any()) return;
+      if (context.WorkingHours.Any()) return;
 
-            var workinghours = new List<WorkingHour>
+      var workinghours = new List<WorkingHour>
             {
                 new WorkingHour
                 {
@@ -29,8 +29,8 @@ namespace Persistence
                 }
             };
 
-            await context.WorkingHours.AddRangeAsync(workinghours);
-            await context.SaveChangesAsync();
-        }
+      await context.WorkingHours.AddRangeAsync(workinghours);
+      await context.SaveChangesAsync();
     }
+  }
 }

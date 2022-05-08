@@ -1,24 +1,24 @@
 import React from "react";
-import {Button, Segment} from "semantic-ui-react";
+import { Button, Segment } from "semantic-ui-react";
 import LoadingComponent from "../../../../../LoadingComponent";
-import {useStore} from "../../../../../stores/store";
+import { useStore } from "../../../../../stores/store";
 
 export default function CityDetails() {
-  const {cityStore} = useStore();
-  const {selectedCity: city, openForm, cancelSelectedCity} = cityStore;
+  const { cityStore } = useStore();
+  const { selectedCity: city, openForm, cancelSelectedCity } = cityStore;
 
   if (!city) return <LoadingComponent />;
   return (
-    <Segment clearing style={{width: "150%", textAlign: "left"}}>
-      <p style={{marginBottom: "10px"}}>
+    <Segment clearing style={{ width: "150%", textAlign: "left" }}>
+      <p style={{ marginBottom: "10px" }}>
         <b>Name: </b>
         {city.text}
       </p>
-      <p style={{marginBottom: "10px"}}>
+      <p style={{ marginBottom: "10px" }}>
         <b>Value: </b>
         {city.value}
       </p>
-      <p style={{marginBottom: "10px"}}>
+      <p style={{ marginBottom: "10px" }}>
         <b>Country: </b>
         {city.country}
       </p>

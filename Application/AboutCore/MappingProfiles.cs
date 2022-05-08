@@ -3,11 +3,11 @@ using Domain;
 
 namespace Application.AboutCore
 {
-    public class MappingProfiles : Profile
+  public class MappingProfiles : Profile
+  {
+    public MappingProfiles()
     {
-        public MappingProfiles()
-        {
-            CreateMap<About, About>();
-        }
+      CreateMap<About, About>();
     }
+  }
 }

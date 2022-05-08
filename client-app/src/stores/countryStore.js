@@ -1,7 +1,7 @@
-import {makeAutoObservable, runInAction} from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
 
-import {v4 as uuid} from "uuid";
+import { v4 as uuid } from "uuid";
 
 export default class CountryStore {
   countryRegistry = new Map();

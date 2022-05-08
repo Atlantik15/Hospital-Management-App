@@ -1,25 +1,25 @@
 import React from "react";
-import {ErrorMessage, Form, Formik} from "formik";
+import { ErrorMessage, Form, Formik } from "formik";
 import MyTextInput from "../../../FormInputs/MyTextInput";
 import MySelectInput from "../../../FormInputs/MySelectInput";
 import MyDateInput from "../../../FormInputs/MyDatePicker";
-import {useStore} from "../../../../stores/store";
-import {observer} from "mobx-react-lite";
-import {Button, Segment, Divider} from "semantic-ui-react";
+import { useStore } from "../../../../stores/store";
+import { observer } from "mobx-react-lite";
+import { Button, Segment, Divider } from "semantic-ui-react";
 
 export default observer(function RegisterForm() {
-  const {userStore, countryStore, cityStore} = useStore();
+  const { userStore, countryStore, cityStore } = useStore();
 
   const roleOptions = [
-    {text: "Admin", value: "admin"},
-    {text: "SuperAdmin", value: "superadmin"},
-    {text: "Receptionist", value: "receptionist"},
-    {text: "Nurse", value: "nurse"},
+    { text: "Admin", value: "admin" },
+    { text: "SuperAdmin", value: "superadmin" },
+    { text: "Receptionist", value: "receptionist" },
+    { text: "Nurse", value: "nurse" },
   ];
 
   const genderOptions = [
-    {text: "Male", value: "male"},
-    {text: "Female", value: "female"},
+    { text: "Male", value: "male" },
+    { text: "Female", value: "female" },
   ];
 
   const countryOptions = countryStore.countryByName;
@@ -43,26 +43,26 @@ export default observer(function RegisterForm() {
   return (
     <Segment clearing>
       <div>
-        <p style={{marginBottom: "10px"}}>Add a new Staff</p>
+        <p style={{ marginBottom: "10px" }}>Add a new Staff</p>
 
         <Formik
           initialValues={initialValues}
-          onSubmit={(values, {setErrors}) =>
+          onSubmit={(values, { setErrors }) =>
             userStore
               .register(values)
-              .catch((error) => setErrors({error: "Invalid input!"}))
+              .catch((error) => setErrors({ error: "Invalid input!" }))
           }
         >
-          {({handleSubmit, isSubmitting, errors}) => (
+          {({ handleSubmit, isSubmitting, errors }) => (
             <Form onSubmit={handleSubmit} autoComplete="off">
               <MyTextInput
-                style={{marginBottom: "10px"}}
+                style={{ marginBottom: "10px" }}
                 name="firstName"
                 placeholder="Firstname"
               />
 
               <MyTextInput
-                style={{marginBottom: "10px"}}
+                style={{ marginBottom: "10px" }}
                 name="lastName"
                 placeholder="Lastname"
               />
@@ -103,19 +103,19 @@ export default observer(function RegisterForm() {
               />
               <Divider />
               <MyTextInput
-                style={{marginBottom: "10px"}}
+                style={{ marginBottom: "10px" }}
                 name="phoneNumber"
                 placeholder="Phone Number"
               />
 
               <MyTextInput
-                style={{marginBottom: "10px"}}
+                style={{ marginBottom: "10px" }}
                 name="email"
                 placeholder="Email"
               />
 
               <MyTextInput
-                style={{marginBottom: "10px"}}
+                style={{ marginBottom: "10px" }}
                 name="password"
                 placeholder="Password"
                 type="password"

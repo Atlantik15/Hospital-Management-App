@@ -10,24 +10,24 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.LabTests
 {
-    public class List
+  public class List
+  {
+    public class Query : IRequest<List<LabTest>> { }
+
+    public class Handler : IRequestHandler<Query, List<LabTest>>
     {
-        public class Query : IRequest<List<LabTest>> { }
+      private readonly DataContext context;
 
-        public class Handler : IRequestHandler<Query, List<LabTest>>
-        {
-            private readonly DataContext context;
+      public Handler(DataContext context)
+      {
+        this.context = context;
+      }
 
-            public Handler(DataContext context)
-            {
-                this.context = context;
-            }
+      public async Task<List<LabTest>> Handle(Query request, CancellationToken tokenCancellation)
+      {
 
-            public async Task<List<LabTest>> Handle(Query request, CancellationToken tokenCancellation)
-            {
-              
-                return await context.LabTests.ToListAsync(tokenCancellation);
-            }
-        }
+        return await context.LabTests.ToListAsync(tokenCancellation);
+      }
     }
+  }
 }

@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const ServicesContainer = styled.div`
 
@@ -98,5 +98,5 @@ export const ServicesContainer = styled.div`
 #service{
     background-color:white;
 }
-`
-export default ServicesContainer
+`;
+export default ServicesContainer;

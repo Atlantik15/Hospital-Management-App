@@ -1,5 +1,5 @@
 import axios from "axios";
-import {stores} from "../stores/store";
+import { stores } from "../stores/store";
 
 const sleep = (delay) => {
   return new Promise((resolve) => {
@@ -125,7 +125,8 @@ const WorkingHours = {
   list: () => requests.get("/workinghours"),
   details: (id) => requests.get(`/workinghours/${id}`),
   create: (workinghour) => requests.post("/workinghours", workinghour),
-  update: (workinghour) => axios.put(`/workinghours/${workinghour.id}`, workinghour),
+  update: (workinghour) =>
+    axios.put(`/workinghours/${workinghour.id}`, workinghour),
   delete: (id) => axios.delete(`/workinghours/${id}`),
 };
 
@@ -150,9 +151,10 @@ const Prescriptions = {
   list: () => requests.get("/prescriptions"),
   details: (id) => requests.get(`/prescriptions/${id}`),
   create: (prescription) => requests.post("/prescriptions", prescription),
-  update: (prescription) => axios.put(`/prescriptions/${prescription.id}`, prescription),
+  update: (prescription) =>
+    axios.put(`/prescriptions/${prescription.id}`, prescription),
   delete: (id) => axios.delete(`/prescriptions/${id}`),
-}
+};
 
 const agent = {
   Abouts,

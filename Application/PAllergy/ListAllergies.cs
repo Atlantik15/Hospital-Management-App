@@ -10,24 +10,24 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.PAllergy
 {
-    public class List
+  public class List
+  {
+    public class Query : IRequest<List<PAllergies>> { }
+
+    public class Handler : IRequestHandler<Query, List<PAllergies>>
     {
-        public class Query : IRequest<List<PAllergies>> { }
+      private readonly DataContext context;
 
-        public class Handler : IRequestHandler<Query, List<PAllergies>>
-        {
-            private readonly DataContext context;
+      public Handler(DataContext context)
+      {
+        this.context = context;
+      }
 
-            public Handler(DataContext context)
-            {
-                this.context = context;
-            }
+      public async Task<List<PAllergies>> Handle(Query request, CancellationToken cancellationToken)
+      {
 
-            public async Task<List<PAllergies>> Handle(Query request, CancellationToken cancellationToken)
-            {
-              
-                return await context.PAllergies.ToListAsync(cancellationToken);
-            }
-        }
+        return await context.PAllergies.ToListAsync(cancellationToken);
+      }
     }
+  }
 }

@@ -10,24 +10,26 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.AddAppointments
 {
-    public class List
+  public class List
+  {
+    public class Query : IRequest<List<AddAppointment>> { }
+
+    public class Handler : IRequestHandler<Query, List<AddAppointment>>
     {
-        public class Query : IRequest<List<AddAppointment>> {}
+      private readonly DataContext _context;
 
-        public class Handler : IRequestHandler<Query, List<AddAppointment>>
-        {
-            private readonly DataContext _context;
+      public Handler(DataContext context)
+      {
+        _context = context;
+      }
 
-            public Handler(DataContext context){
-                _context = context;
-            }
+      public async Task<List<AddAppointment>> Handle(Query request, CancellationToken cancellationToken)
+      {
 
-            public async Task<List<AddAppointment>> Handle(Query request, CancellationToken cancellationToken){
-               
-                
-                return await _context.Appointments.ToListAsync(cancellationToken);
-            }
-            
-        }
+
+        return await _context.Appointments.ToListAsync(cancellationToken);
+      }
+
     }
+  }
 }

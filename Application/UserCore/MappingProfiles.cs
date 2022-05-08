@@ -4,11 +4,11 @@ using Domain;
 
 namespace Application.UserCore
 {
-    public class MappingProfiles : Profile
+  public class MappingProfiles : Profile
+  {
+    public MappingProfiles()
     {
-        public MappingProfiles()
-        {
-            CreateMap<AppUser, AppUser>();
-        }
+      CreateMap<AppUser, AppUser>();
     }
+  }
 }

@@ -7,14 +7,14 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Persistence
 {
-    public class SeedAbout
+  public class SeedAbout
+  {
+    public static async Task SeedData(DataContext context)
     {
-        public static async Task SeedData(DataContext context)
-        {
 
-            if (context.About.Any()) return;
+      if (context.About.Any()) return;
 
-            var about = new List<About>
+      var about = new List<About>
             {
                 new About
                 {
@@ -28,8 +28,8 @@ namespace Persistence
                 }
             };
 
-            await context.About.AddRangeAsync(about);
-            await context.SaveChangesAsync();
-        }
+      await context.About.AddRangeAsync(about);
+      await context.SaveChangesAsync();
     }
+  }
 }

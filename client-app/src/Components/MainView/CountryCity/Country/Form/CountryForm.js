@@ -1,11 +1,11 @@
-import React, {useState} from "react";
-import {Form, Segment, Button} from "semantic-ui-react";
-import {useStore} from "../../../../../stores/store";
-import {observer} from "mobx-react-lite";
+import React, { useState } from "react";
+import { Form, Segment, Button } from "semantic-ui-react";
+import { useStore } from "../../../../../stores/store";
+import { observer } from "mobx-react-lite";
 
 export default observer(function CountryForm() {
-  const {countryStore} = useStore();
-  const {selectedCountry, closeForm, createCountry, updateCountry, loading} =
+  const { countryStore } = useStore();
+  const { selectedCountry, closeForm, createCountry, updateCountry, loading } =
     countryStore;
   const initialState = selectedCountry ?? {
     id: "",
@@ -21,12 +21,12 @@ export default observer(function CountryForm() {
   }
 
   function handleInputChange(event) {
-    const {name, value} = event.target;
-    setCountry({...country, [name]: value});
+    const { name, value } = event.target;
+    setCountry({ ...country, [name]: value });
   }
 
   return (
-    <Segment clearing style={{width: "150%", textAlign: "left"}}>
+    <Segment clearing style={{ width: "150%", textAlign: "left" }}>
       <Form onSubmit={handleSubmit} autoComplete="off">
         <Form.Input
           placeholder="Name"

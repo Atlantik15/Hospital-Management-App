@@ -3,11 +3,11 @@ using Domain;
 
 namespace Application.AppointmentsCore
 {
-    public class MappingProfiles : Profile
+  public class MappingProfiles : Profile
+  {
+    public MappingProfiles()
     {
-        public MappingProfiles()
-        {
-            CreateMap<AddAppointment,AddAppointment>();
-        }
+      CreateMap<AddAppointment, AddAppointment>();
     }
+  }
 }
