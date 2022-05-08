@@ -15,10 +15,10 @@ namespace Application.PAllergy
 
         public class Handler : IRequestHandler<Command>
         {
-            private readonly DataContext context;
-            public Handler(DataContext context)
+            private readonly DataContext DataContext;
+            public Handler(DataContext DataContext)
             {
-                this.context = context;
+                this.DataContext = DataContext;
             }
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
