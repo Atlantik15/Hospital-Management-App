@@ -132,7 +132,6 @@ const Patient = ({ classes, ...props }) => {
                   <TableCell>{record.lastName}</TableCell>
                   <TableCell>{record.gender}</TableCell>
                   <TableCell>{record.bloodGroup}</TableCell>
-                  {console.log(loadPatients)}
                   <TableCell>
                     <Controls.ActionButton color="primary">
                       <EditOutlinedIcon

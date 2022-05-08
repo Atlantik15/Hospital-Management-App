@@ -44,7 +44,6 @@ export default observer(function AppointmentsForm() {
         backgroundColor: "#f5f7fb",
       }}
     >
-      {" "}
       ADD APPOINTMENT
       <div style={{ border: "1px solid #9b59b6" }}></div>
       <Form onSubmit={handleSubmit} autoComplete="off">
