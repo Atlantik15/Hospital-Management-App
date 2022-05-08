@@ -22,9 +22,9 @@ namespace Application.LabTests
                 this.context = context;
             }
 
-            public async Task<LabTest> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<LabTest> Handle(Query reuqestQuery, CancellationToken cancellationToken)
             {
-                 return await context.LabTests.FindAsync(request.Id);
+                 return await context.LabTests.FindAsync(reuqestQuery.Id);
             }
         }
     }
