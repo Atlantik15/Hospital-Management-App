@@ -52,7 +52,7 @@ export default observer(function BodyInfoList (){
                                     </TableCell>
                                     {user.role === "admin" && (
                                     <ButtonGroup>
-                                        <Button basic  onClick={() => bodyInfoStore.selectBodyInfo(bodyinfo.id)} color='black' style={{marginTop:'70px', marginLeft:'40px'}}><i class="edit icon">Edit </i></Button>
+                                        <Button basic  onClick={() => bodyInfoStore.selectBodyInfo(bodyinfo.id)} color='black' style={{marginTop:'73px', marginLeft:'40px'}}><i class="edit icon">Edit </i></Button>
                                     </ButtonGroup>
                                     )}
                                 </TableRow>
