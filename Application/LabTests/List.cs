@@ -23,10 +23,10 @@ namespace Application.LabTests
                 this.context = context;
             }
 
-            public async Task<List<LabTest>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<List<LabTest>> Handle(Query request, CancellationToken tokenCancellation)
             {
               
-                return await context.LabTests.ToListAsync(cancellationToken);
+                return await context.LabTests.ToListAsync(tokenCancellation);
             }
         }
     }
