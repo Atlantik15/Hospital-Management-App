@@ -21,9 +21,9 @@ namespace Application.PatientHistories
                 this.context = context;
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Unit> Handle(Command command, CancellationToken cancellationToken)
             {
-                context.PatientHistories.Add(request.PatientHistory);
+                context.PatientHistories.Add(command.PatientHistory);
                 await context.SaveChangesAsync();
                 return Unit.Value;
             }
