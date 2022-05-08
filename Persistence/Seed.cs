@@ -50,7 +50,9 @@ namespace Persistence
 
             if (context.DReminders.Any()) return;
 
+
             var reminders = new List<DReminder>
+            
             {
                 new DReminder
                 {

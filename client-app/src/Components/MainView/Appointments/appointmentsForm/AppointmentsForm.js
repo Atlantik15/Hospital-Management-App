@@ -5,7 +5,7 @@ import { useStore } from '../../../../stores/store';
 
 export default observer(function AppointmentsForm() {
     const { appointmentsStore, userStore } = useStore();
-    const { selectedAppointment, closeForm, createAppointment, updateAppointment, loading } = appointmentsStore;
+    const { selectedAppointment, closeForm,createAppointment,updateAppointment, loading } = appointmentsStore;
     const { user } = userStore;
 
     const initialState = selectedAppointment ?? {
@@ -19,7 +19,7 @@ export default observer(function AppointmentsForm() {
     const [appointment, setAppointments] = useState(initialState);
 
     function handleSubmit() {
-        appointment.id ? updateAppointment(appointment) : createAppointment(appointment);
+        appointment.id ?  updateAppointment(appointment) : createAppointment(appointment);
     }
 
     function handleInputChange(event) {
