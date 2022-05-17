@@ -14,6 +14,7 @@ namespace API.Controllers
 
 
     [HttpGet]
+    //comment
     public async Task<ActionResult<List<About>>> GetAbout()
     {
       return await Mediator.Send(new List.Query());
